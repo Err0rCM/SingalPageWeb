@@ -75,7 +75,16 @@
             "mode" : "history"
         },
         "devServer" : {
-            "https" : false
+            "https" : false,
+			
+			"proxy" :{
+                "/test": {
+                    "target": "http://localhost:80",
+                    "changeOrigin": true,
+                    "secure": false,
+                    "pathRewrite":{"^/test":""}
+                }
+            }
         }
     }
 }

@@ -12,30 +12,78 @@
 			</view>
 			<view class="boxTwo">
 				评论/留言
-				<view id="app" class="boxButton">
-					<form action=" " method="POST">
-						<input class="Left" type="text" >
-						<button class="Right" type="primary">Button</button>
+				<view id="app" class="boxButton" >
+					<form   @submit="formSubmit()" >
+						<input class="Left" name="text" type="text" id='textbox' >
+						<button form-type="submit" class="Right" @click="on()">提交</button>
 					</form>
 				
 				<!-- <p>{{msg}}</p> -->
 				</view>
 			</view>
-			<p align="center">没有更多了</p>
+			<view class="five">
+				<h6 align=center>没有更多了！</h6>
+			</view>
 		</view>
 		
 </template>
 
 <script>
+	
 
 	export default {
 		name: 'app',
+		globalData: {
+			user: {}
+		},
 		data() {
 			return {
 				 msg: ''
 			}
 		},
+		
+		
+
 		methods: {
+			
+			on(){	
+				uni.request({
+			    url:'http://pv.sohu.com/cityjson?ie=utf-8',
+				method:'POST',
+				success: (res) => {
+			        const reg = /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/;
+					let ips = reg.exec(res.data);
+					console.log(ips[0]);
+					// document.getElementById("text").innerHTML=ips[0];
+					getApp().globalData.user = ips[0];
+					console.log(getApp().globalData.user);
+				}
+			})
+			},
+			
+			
+			formSubmit(){
+				var user = getApp().globalData.user;
+				console.log(user);
+				let textcontent = document.getElementsByTagName('input')[0].value;
+				// let ips =document.getElementById("text").value;
+				// console.log(ips)
+				uni.request({
+					url: 'http://10.147.17.72:5000/api/comment',
+					method:'POST',
+					data: {
+						ip: user,
+						text: textcontent,
+						video: "1"
+						
+					},
+					 success:res=>{
+					        console.log(res.data);
+					        this.carouselData = res.data
+							}
+				})
+				 
+			}
 			
 		}
 	}
@@ -98,5 +146,7 @@
 		margin: -20.5% 63% auto;
 		box-sizing: border-box;
 	}
-	
+	.five{
+		line-height: 80px;
+	}
 </style>

@@ -42,7 +42,7 @@
 		<view class="boxThree">
 			<!--签到打卡-->
 			<view class="threeLeft">
-				<image src="/static/images/R1/R1Ipx-05.png" class="boxImage"></image>
+				<image src="/static/images/R1/R1Ipx-05.png" class="boxImage" @click="toRed3('1')"></image>
 			</view>
 			<!--互动功能-->
 			<view class="threeRight">
@@ -88,6 +88,12 @@
 			toRed2(code){
 				uni.navigateTo({
 					url: '../../pamphlets/red'
+				})
+				
+			},
+			toRed3(code){
+				uni.navigateTo({
+					url: '../../sign/red'
 				})
 				
 			}

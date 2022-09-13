@@ -66,7 +66,7 @@
 	}
 	.boxTwo{
 		width: 100%;
-		height: 210upx;
+		height: 220upx;
 		margin: 50% 0% auto;
 		display: flex;
 		box-sizing: border-box;

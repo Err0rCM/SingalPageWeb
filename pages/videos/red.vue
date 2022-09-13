@@ -4,7 +4,7 @@
 			<view class="boxOne">
 				<!--半只梨的故事-->
 				<view class="one">
-					<image src="/static/images/R5/20220526084833bzl.jpg" class="boxImage" @click="toRed1('1')"></image>
+					<image src="/static/images/R5/20220526084833bzl.jpg" class="boxImage" @click="toRed1('1')" ></image>
 				</view>
 			</view>
 			<view>
@@ -28,7 +28,6 @@
 					<h6 align=center>没有更多了！</h6>
 				</view>
 			</view>
-			
 		</view>
 	</view>
 </template>

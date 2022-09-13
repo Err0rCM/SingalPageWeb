@@ -17,6 +17,13 @@
 			"style": {
 				"navigationBarTitleText": "uni-app"
 			}
+		},
+		{
+			//测试页
+			"path": "pages/index/ip",
+			"style": {
+				"navigationBarTitleText": "123"
+			}
 		}
         ,{
 			//地图导航页
@@ -98,6 +105,24 @@
         }
         ,{
             "path" : "pages/videos/video2",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/sign/red",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/index/test",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
