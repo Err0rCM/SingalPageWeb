@@ -5,17 +5,17 @@
 				<swiper class="swiper" circular :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
 					<swiper-item>
 						<view class="swiper-item">
-							<image src="/static/images/R1/R1swiper1.png"></image>
+							<image src="/static/images/R1/R2Ipx-08.png"></image>
 						</view>
 					</swiper-item>
 					<swiper-item>
 						<view class="swiper-item">
-							<image src="/static/images/R1/R1swiper2.png"></image>
+							<image src="/static/images/R1/R2Ipx-08.png"></image>
 						</view>
 					</swiper-item>
 					<swiper-item>
 						<view class="swiper-item">
-							<image src="/static/images/R1/R1swiper3.png"></image>
+							<image src="/static/images/R1/R2Ipx-08.png"></image>
 						</view>
 					</swiper-item>
 				</swiper>
@@ -24,11 +24,11 @@
 		<view class="boxOne">
 			<!--学习金句-->
 			<view class="oneLeft">
-				<image src="/static/images/R1/R1_L1.png" class="boxImage" @click="toRed('1')"></image>
+				<image src="/static/images/R1/R2Ipx-01.png" class="boxImage" @click="toRed('1')"></image>
 			</view>
 			<!--学习视频-->
 			<view class="oneRight">
-				<image src="/static/images/R1/R1_L2.png" class="boxImage" @click="toRed1('1')"></image>
+				<image src="/static/images/R1/R2Ipx-03.png" class="boxImage" @click="toRed1('1')"></image>
 			</view>
 			
 			
@@ -36,17 +36,17 @@
 		<view class="boxTwo">
 			<!--学习手册-->
 			<view class="two">
-				<image src="/static/images/R1/R1_L3.png" class="boxImage" @click="toRed2('1')"></image>
+				<image src="/static/images/R1/R2Ipx-02.png" class="boxImage" @click="toRed2('1')"></image>
 			</view>
 		</view>
 		<view class="boxThree">
 			<!--签到打卡-->
 			<view class="threeLeft">
-				<image src="/static/images/R1/R1Ipx-05.png" class="boxImage" @click="toRed3('1')"></image>
+				<image src="/static/images/R1/R2Ipx-05.png" class="boxImage" @click="toRed3('1')"></image>
 			</view>
 			<!--互动功能-->
 			<view class="threeRight">
-				<image src="/static/images/R1/R1Ipx-06.png" class="boxImage" @click="toRed4('1')"></image>
+				<image src="/static/images/R1/R2Ipx-06.png" class="boxImage"></image>
 			</view>
 			
 		</view>
@@ -75,7 +75,7 @@
 			},
 			toRed(code){
 				uni.navigateTo({
-					url: '../../sentences/red'
+					url: '../../sentences/purple'
 				})
 				
 			},
@@ -87,18 +87,15 @@
 			},
 			toRed2(code){
 				uni.navigateTo({
-					url: '../../pamphlets/red'
-				})	
+					url: '../../pamphlets/purple'
+				})
+				
 			},
 			toRed3(code){
 				uni.navigateTo({
 					url: '../../sign/red'
-				})	
-			},
-			toRed4(code){
-				uni.navigateTo({
-					url: '../../interict/red'
-				})	
+				})
+				
 			}
 		}
 	}
@@ -115,7 +112,7 @@
 		width: 70px;
 		height: 70px;
 		line-height: 70px;
-		background-color: #d75e5e;
+		background-color: #6d36a3;
 		text-align: center;
 		border-radius: 50%;
 		color: #FFF;

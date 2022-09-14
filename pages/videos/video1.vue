@@ -48,14 +48,15 @@
 			
 			on(){	
 				uni.request({
-			    url:'http://pv.sohu.com/cityjson?ie=utf-8',
-				method:'POST',
+			    url:'http://api.err0r.top:5000/api/ip',
+				method:'GET',
 				success: (res) => {
-			        const reg = /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/;
-					let ips = reg.exec(res.data);
-					console.log(ips[0]);
+	
+					console.log(res);
+					var ips =eval(res.data);
+					var ip =ips['ip'];
 					// document.getElementById("text").innerHTML=ips[0];
-					getApp().globalData.user = ips[0];
+					getApp().globalData.user = ip;
 					console.log(getApp().globalData.user);
 				}
 			})
@@ -69,7 +70,7 @@
 				// let ips =document.getElementById("text").value;
 				// console.log(ips)
 				uni.request({
-					url: 'http://10.147.17.72:5000/api/comment',
+					url: 'http://api.err0r.top:5000/api/comment',
 					method:'POST',
 					data: {
 						ip: user,
@@ -80,6 +81,7 @@
 					 success:res=>{
 					        console.log(res.data);
 					        this.carouselData = res.data
+							alert("评论成功");
 							}
 				})
 				 

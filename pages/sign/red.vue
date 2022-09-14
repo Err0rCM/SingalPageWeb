@@ -3,9 +3,11 @@
 		<view class="title" align="center">
 			  打卡签到
 		</view>
-		<view>
-			<p id="you">one</p>
-		</view>
+		<view  class="box" v-for="it in msg">
+					<h2 style="width:80%;display:inline-block;white-space: pre-wrap; word-wrap: break-word;height: auto;">ip:{{it.ip}}</h2>
+					<br/>
+					<h5><text >签到时间：{{it.datetime}}</text></h5>
+				</view>
 		
 		<view>
 			<view id="app" class="boxButton" >
@@ -27,21 +29,24 @@
 		},
 		data() {
 			return {
-				
+				msg:'你好'
 			}
+		},
+		onShow() {
+			this.msg=getApp().globalData.users;4
+			this.getSubmit();
 		},
 		methods: {
 			on(){
 				uni.request({
-			    url:'http://pv.sohu.com/cityjson?ie=utf-8',
-				method:'POST',
+			    url:'http://api.err0r.top:5000/api/ip',
+				method:'GET',
 				success: (res) => {
-			        const reg = /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/;
-					let ips = reg.exec(res.data);
-					console.log(ips[0]);
+					var ips =eval(res.data);
+					var ip =ips['ip'];
 					// document.getElementById("text").innerHTML=ips[0];
-					getApp().globalData.user = ips[0];
-					
+					getApp().globalData.user = ip;
+					console.log(getApp().globalData.user);
 				}
 			})
 			},
@@ -51,14 +56,22 @@
 						// let ips =document.getElementById("text").value;
 						// console.log(ips)
 						uni.request({
-							url: 'http://10.147.17.72:5000/api/Signin',
+							url: 'http://api.err0r.top:5000/api/Signin',
 							method:'POST',
 							data: {
 								ip: user
 							},
 							 success:res=>{
 									console.log(res.data);
-									this.carouselData = res.data
+									this.carouselData = res.data;
+									var code =eval(res.data);
+									
+									if(code['code']==200)
+										alert("签到成功！！！");
+									else if(code['code']==201)
+										alert("今日已签到！！！");
+									else
+										alert("签到失败！！！");
 									}
 						})
 						 
@@ -66,15 +79,22 @@
 			getSubmit(){
 				
 				uni.request({
-					url: 'http://10.147.17.72:5000/api/getSignInUsers',
+					url: 'http://api.err0r.top:5000/api/getSignInUsers',
 					method:'GET',
 					 success:res=>{
 							console.log(res.data);
 							this.carouselData = res.data;
-							let json =JSON.toString('result')
+							var arr =eval(res.data);
+							var test =arr.result;
+							
+							getApp().globalData.users=test;
+							this.msg=getApp().globalData.users;
+								
+							
+							
 							}
 				})
-				
+					
 			}
 					
 				}
@@ -102,5 +122,14 @@
 		position: fixed;
 		margin: 0% 45% auto;
 		bottom: 50px;
+	}
+	.box{
+		width: 100%;
+		height: 80upx;
+		margin: 1.2% 0% auto;
+		display: flex;
+		box-sizing: border-box;
+		background-color:#F8F8F8;
+		color:#DD524D;
 	}
 </style>

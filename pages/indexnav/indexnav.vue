@@ -5,9 +5,9 @@
 		</view>
 		<view class="con_center" :style="{height: deviceheight + 'px'}">
 			<!--重温红色印记-->
-			<image src="../../static/startimage/1.png" class="imagepos animate-icon-up" style="top: 8%; right: 9%" @click="toPage('1')"></image>
+			<image src="../../static/startimage/1.png" class="imagepos animate-icon-up" style="top: 8%; right: 9%" @click="toPage1('1')"></image>
 			<!--重温艰苦创业-->
-			<image src="../../static/startimage/2.png" class="imagepos animate-icon-up" style="top: 32%; left: 54%"></image>
+			<image src="../../static/startimage/2.png" class="imagepos animate-icon-up" style="top: 32%; left: 54%" @click="toPage2('1')"></image>
 			<!--加强基层治理-->
 			<image src="../../static/startimage/3.png" class="imagepos animate-icon-up" style="top: 12%; right: 2%"></image>
 			<!--强生态治理-->
@@ -48,10 +48,15 @@
 			
 		},
 		methods: {
-			toPage(code){
+			toPage1(code){
 				uni.switchTab({
 					url: "../tab/index/index"
 				})
+			},
+			toPage2(code){
+				uni.navigateTo({
+					url: "../tab/index/index_purple"
+				})	
 			}
 		}
 	}
